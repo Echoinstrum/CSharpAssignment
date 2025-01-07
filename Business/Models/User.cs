@@ -17,5 +17,18 @@ namespace Business.Models
         public string PostalCode { get; set; }
 
         public string PlaceOfResidence { get; set; } = null!;
+
+        public User(string firstName, string lastName, string email, string phoneNumber, string streetAddress, string postalCode, string placeOfResidence)
+        {
+            Id = Guid.NewGuid();
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            PhoneNumber = phoneNumber;
+            StreetAddress = streetAddress;
+            PostalCode = postalCode;
+            PlaceOfResidence = placeOfResidence;
+        }
     }
+
 }
