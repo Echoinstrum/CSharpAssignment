@@ -1,14 +1,27 @@
-﻿using Business.Models;
+﻿using Business.Interfaces;
+using Business.Models;
 
 namespace Business.Services;
 
-public class UserService
+public class UserService : IUserService
 {
-    private List<User> _users = new List<User>();
+    private List<User> _users;
+    private readonly IFileService _fileService;
+    private const string FilePath = "users.json";
 
-    public void AddUser(string firstName, string lastName, string email, string phoneNumber, string streetAddress, string postalCode, string placeOfResidence)
+    public UserService()
     {
-        var user = new User(firstName, lastName, email, phoneNumber, streetAddress, postalCode, placeOfResidence);
+        _fileService = new FileService();
+        _users = _fileService.LoadUsersFromFile(FilePath).ToList();
+    }
+
+    public void SaveUsers(IEnumerable<User> users)
+    {
+        _fileService.SaveUsersToFile(_users, FilePath);
+    }
+
+    public void AddUser(User user)
+    {
         _users.Add(user);
     }
 
