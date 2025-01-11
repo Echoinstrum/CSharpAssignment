@@ -7,22 +7,17 @@ public class UserService : IUserService
 {
     private List<User> _users;
     private readonly IFileService _fileService;
-    private const string FilePath = "users.json";
 
     public UserService()
     {
         _fileService = new FileService();
-        _users = _fileService.LoadUsersFromFile(FilePath).ToList();
-    }
-
-    public void SaveUsers(List<User> users)
-    {
-        _fileService.SaveUsersToFile(users, FilePath);
+        _users = _fileService.LoadUsersFromFile().ToList();
     }
 
     public void AddUser(User user)
     {
         _users.Add(user);
+        _fileService.SaveUsersToFile(_users);
     }
 
     public List<User> GetAllUsers()
