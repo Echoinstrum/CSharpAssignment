@@ -25,8 +25,8 @@ namespace Business.Interfaces
     {
         void AddUser(User user); 
 
-        IEnumerable<User> GetAllUsers();
+        List<User> GetAllUsers();
 
-        User? FindUserById(Guid id);
+        void SaveUsers(List<User> users);
     }
 }

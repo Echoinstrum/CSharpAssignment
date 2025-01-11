@@ -15,9 +15,9 @@ public class UserService : IUserService
         _users = _fileService.LoadUsersFromFile(FilePath).ToList();
     }
 
-    public void SaveUsers(IEnumerable<User> users)
+    public void SaveUsers(List<User> users)
     {
-        _fileService.SaveUsersToFile(_users, FilePath);
+        _fileService.SaveUsersToFile(users, FilePath);
     }
 
     public void AddUser(User user)
@@ -25,13 +25,8 @@ public class UserService : IUserService
         _users.Add(user);
     }
 
-    public IEnumerable<User> GetAllUsers()
+    public List<User> GetAllUsers()
     {
         return _users;
-    }
-
-    public User? FindUserById(Guid id)
-    {
-        return _users.FirstOrDefault(user => user.Id == id);
     }
 }
