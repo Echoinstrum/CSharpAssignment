@@ -26,7 +26,5 @@ namespace Business.Interfaces
         void AddUser(User user); 
 
         List<User> GetAllUsers();
-
-        void SaveUsers(List<User> users);
     }
 }

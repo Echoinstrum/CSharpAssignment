@@ -76,8 +76,6 @@ public class MenuService
         _userService.AddUser(newUser);
 
         Console.WriteLine("User added");
-
-        _userService.SaveUsers(_userService.GetAllUsers());
     }
 
     private void ListAllUsersDialog()
