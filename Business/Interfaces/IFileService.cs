@@ -9,8 +9,8 @@ namespace Business.Interfaces
 {
     public interface IFileService
     {
-        void SaveUsersToFile(IEnumerable<User> users, string filepath);
+        void SaveUsersToFile(List<User> users, string filepath);
 
-        IEnumerable<User> LoadUsersFromFile(string filepath);
+        List<User> LoadUsersFromFile(string filepath);
     }
 }

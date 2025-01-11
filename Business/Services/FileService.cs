@@ -7,17 +7,22 @@ namespace Business.Services;
 
 public class FileService : IFileService
 {
-    public void SaveUsersToFile(IEnumerable<User> users, string filepath)
+    public void SaveUsersToFile(List<User> users, string filepath)
     {
         string jsonString = JsonSerializer.Serialize(users);
 
         File.WriteAllText(filepath, jsonString);
     }
 
-    public IEnumerable<User> LoadUsersFromFile(string filepath)
+    public List<User> LoadUsersFromFile(string filepath)
     {
+        if (!File.Exists(filepath))
+        {
+            File.WriteAllText(filepath, "[]");
+        }
+
         string jsonString = File.ReadAllText(filepath);
-        IEnumerable<User> users = JsonSerializer.Deserialize<IEnumerable<User>>(jsonString)!;
+        List<User> users = JsonSerializer.Deserialize<List<User>>(jsonString)!;
 
         return users ?? new List<User>();
     }
