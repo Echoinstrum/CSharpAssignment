@@ -35,7 +35,7 @@ public class MenuService
                 case "2":
                     ListAllUsersDialog();
                     break;
-                case "":
+                case "3":
                     exitMenu = true;
                     break;
                 default:
